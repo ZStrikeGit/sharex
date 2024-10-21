@@ -136,7 +136,7 @@ export function processUploaded(req: Request, res: Response, next: Function) { /
 				// Upload to Amazon S3
 				if (s3enabled) return s3.putObject({
 					Bucket: s3bucket,
-					Key: req.file.randomId.concat(req.file.ext),
+					Key: req.file.originalname,
 					ACL: 'public-read',
 					ContentType: req.file.mimetype,
 					Body: fs.createReadStream(req.file.path)
